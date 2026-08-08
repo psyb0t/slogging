@@ -90,7 +90,7 @@ if err := slogconf.Init(slogconf.Options{
 }
 ```
 
-Only the variables you name get read, so a stray `LOG_LEVEL` can't sneak in behind yours. `DefaultLevel` / `DefaultFormat` / `DefaultAddSource` move the fallbacks. The zero `Options{}` is exactly what the blank import does.
+Only the variables you name get read, so a stray `LOG_LEVEL` can't sneak in behind yours — `AddSourceEnvVar` renames the third one the same way. `DefaultLevel` / `DefaultFormat` / `DefaultAddSource` move the fallbacks. The zero `Options{}` is exactly what the blank import does.
 
 **Call it early.** `slog.Logger.With` snapshots the handler chain when called, so a logger derived before `Init` keeps pointing at the old one.
 
@@ -228,6 +228,8 @@ This module was `github.com/psyb0t/slog-configurator` through v1.5.0. Those vers
 | `github.com/psyb0t/slog-configurator/logring` | `github.com/psyb0t/slogging/handlers/logring` |
 | `github.com/psyb0t/common-go/slogging/loki` | `github.com/psyb0t/slogging/handlers/loki` |
 
+Every exported name was unchanged in that move — only import paths and the package name changed, so it was a find-and-replace on imports.
+
 Since v1.7.0 the handler API changed as well:
 
 | before | after |
@@ -239,8 +241,6 @@ Since v1.7.0 the handler API changed as well:
 | `slogconf.FanOutHandler` / `NewFanOutHandler` | `handlers.FanOutHandler` / `handlers.NewFanOut` |
 
 `MultiWriterHandler` never was one — it took exactly two writers and routed by level. `handlers.Handler` is that thing named for what it does, and `handlers.Stdout` / `handlers.Stderr` are variadic, so "several writers per stream" is finally what the API actually offers.
-
-Every exported name is unchanged — only import paths and the package name move.
 
 The Loki handler additionally drops its `gonfiguration` and `common-go` dependencies. `NewClient` and `NewHandler` read the same `SLOGGING_LOKI_URL` / `SLOGGING_LOKI_APPNAME` variables as before, just via the standard library.
 

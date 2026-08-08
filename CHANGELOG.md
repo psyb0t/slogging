@@ -2,6 +2,17 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v1.7.1 — 2026-08-08
+
+Documentation. No code change.
+
+- The env-var override paragraph named `LevelEnvVar` and `FormatEnvVar` but not
+  `AddSourceEnvVar`, so the third one looked like it had no override when it
+  works identically.
+- The rename note said exported names "are unchanged", present tense, which
+  reads as a standing promise rather than a statement about the one move from
+  `slog-configurator`. Reworded to the past tense it was describing.
+
 ## v1.7.0 — 2026-08-08
 
 **Breaking.** The handler API is rebuilt around what the pieces actually do.
