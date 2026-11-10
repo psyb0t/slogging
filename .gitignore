@@ -7,3 +7,4 @@ git-update.sh
 .telemetry/
 .testing/
 *.local.json
+git-update.sh.debot
