@@ -2,6 +2,17 @@
 
 All notable changes per release. Versions follow [semver](https://semver.org).
 
+## v1.7.2 — 2026-11-10
+
+- The documentation is published at https://psyb0t.github.io/slogging/. The
+  configuration, handler, ring, Loki, troubleshooting, migration and
+  development reference moved there from the README, which now keeps the
+  overview, a quick start and links.
+- A tag push no longer reruns the checks. It waits for the `main` run of the
+  same commit to pass, then cuts the GitHub release.
+- Added Buy Me a Coffee to the funding links, and committed `AGENTS.md` plus
+  project rules in `.agents/rules/` for coding agents.
+
 ## v1.7.1 — 2026-08-08
 
 Documentation. No code change.
